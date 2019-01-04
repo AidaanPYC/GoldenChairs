@@ -1,0 +1,217 @@
+import random
+import time
+def Loss(dayslived,rank):
+  print("Oops.. You lost. Thanks for playing! You lived for " + str(dayslived) + " days and made it to rank " + str(rank) + ".")
+  return
+allies = 0
+visitor = 0
+attacker = 0
+Population = 100
+Happiness = 90
+Defense = 0
+Attack = 0
+Gold = 150
+PeasantChance = 0
+CoinFlip = 0
+SavedGifts = 0
+answer = 0
+dayslived = 0
+Loss = 0
+rank = 1
+KingJoe = 0
+KingBob = 0
+KingTimmy = 0
+UserName = input("""What should you be referred to as? """)
+print("""Disclaimer: answer with either yes or no or the answer will be taken as a no (No capitals)""")
+while Happiness <= 110 and Population <= 120 and Loss == 0 :
+  answer = 0
+  PeasantChance = 0
+  visitor = random.randint(1,4)
+  if visitor == 1:
+    print("*a dirty peasant has entered your chambers ")
+    if Happiness >= 95:
+      print("""Thank you for all the great things that you have done for the city!
+      Have some money!""")
+      Gold += random.randint(3,7)
+    elif SavedGifts >= 1:
+      print("Thank you for lending me money! Have some youreself.")
+      Gold += random.randint(5,10)
+    elif Happiness <= 80:
+      print("""You are doing a pretty bad job with the city,
+       I'm leaving and taking my family with me.""")
+      Population -= random.randint(2,5)
+      print("Your population is now " + str(Population) + " !")
+    else:
+      answer = input("""May I please have a coin or two? I promise I will pay it back as soon as possible! """)
+      if answer == "yes":
+        PeasantChance = random.randint(1,2)
+        Gold -= random.randint(1,2)
+        Happiness += 2
+        print("Thank you!")
+      else:
+        print("Fine, keep your money. I never wanted it.")
+      if PeasantChance == 1:
+        SavedGifts += 1
+
+  elif visitor == 2:
+    print("*A lowly soldier has visited your town") 
+    answer = input("""I would like to join your army with a few of my companions in exchange for some gold, do you accept the offer? """)
+    if answer == "yes": 
+      Population += random.randint(3,5)
+      Attack += random.randint(3,7)
+      Defense += random.randint(3,7)
+      Gold -= random.randint(2,4)
+      print("Thank you so much, " + str(UserName) + "! We will serve your city well, may it ever be strong!")
+    else:
+      print("Fine. It's your loss.")
+      print("*The soldier and his companions walk off")
+      
+  elif visitor == 3:
+    print("*A traveling merchant has visited your town trying to sell goods")
+    answer = input("""Hello, your grace. Would you like to buy anything for a small amount of gold?""")
+    if answer == "yes":
+      print("Thank you for your purchase, enjoy it while you can.")
+      Defense += random.randint(2,4)
+      Attack += random.randint(1,2)
+      Gold -= random.randint(1,2)
+    else:
+      print("Fine, but don't come crying to me when you are defeated.")
+      
+  elif visitor == 4:
+    print("*A shining knight in armor has visited your town")
+    answer = input("""Would you like to purchase my services to protect your town for a sum of gold? """)
+    if answer == "yes":
+      print("Thank you sir. I promise I wont let you down!")
+      Gold -= random.randint(10,30)
+      Happiness += random.randint(8, 15)
+      Attack += random.randint(5,20)
+      Defense += random.randint(5,20)
+      Population += random.randint(4,10)
+    else:
+      print("Fine. Your city is going down in ruins anyway")
+  time.sleep(2)
+  print("You now have " + str(Gold) + " Gold!")
+  print("Your population is now " + str(Population) + " !")
+  print("Your city's happiness is now " + str(Happiness) + " out of 100")
+  print("Your city's attack is now " + str(Attack) + "!")
+  print("Your city's defense is now " + str(Defense) + "!")
+  time.sleep(2)
+  print("The town is going to sleep...")
+  time.sleep(3)
+  dayslived += 1
+  if Population <= 75 and Happiness <= 70:
+    Loss = 1
+  for i in range(6):
+    print("")
+  if Loss == 1:
+    Loss(dayslived,Rank)
+else:
+  Rank += 1
+  Population += 10
+  print("""You have leveled up into Rank two!
+  Now you have access to new types of visitors and also the ability to make allies and fight other cities!""")
+  while Happiness <= 150 and Population <= 165 and Loss == 0:
+    answer = 0
+    PeasantChance = 0
+    CoinFlip = 0
+    visitor = random.randint(1,7)
+    if visitor == 1:
+      print("*a dirty peasant has entered your chambers ")
+      if Happiness >= 95:
+        print("""Thank you for all the great things that you have done for the city!
+        Have some money!""")
+        Gold += random.randint(3,7)
+      elif SavedGifts >= 1:
+        print("Thank you for lending me money! Have some youreself.")
+        Gold += random.randint(5,10)
+      elif Happiness <= 80:
+        print("""You are doing a pretty bad job with the city,
+        I'm leaving and taking my family with me.""")
+        Population -= random.randint(2,5)
+        print("Your population is now " + str(Population) + " !")
+      else:
+        answer = input("""May I please have a coin or two? I promise I will pay it back as soon as possible! """)
+      if answer == "yes":
+        PeasantChance = random.randint(1,2)
+        Gold -= random.randint(1,2)
+        Happiness += 2
+        print("Thank you!")
+      else:
+        print("Fine, keep your money. I never wanted it.")
+      if PeasantChance == 1:
+        SavedGifts += 1
+
+    elif visitor == 2:
+      print("*A lowly soldier has visited your town") 
+      answer = input("""I would like to join your army with a few of my companions in exchange for some gold, do you accept the offer? """)
+      if answer == "yes": 
+        Population += random.randint(3,5)
+        Attack += random.randint(3,7)
+        Defense += random.randint(3,7)
+        Gold -= random.randint(2,4)
+        print("Thank you so much, " + str(UserName) + "! We will serve your city well, may it ever be strong!")
+      else:
+        print("Fine. It's your loss.")
+        print("*The soldier and his companions walk off") 
+    elif visitor == 3:
+      print("*A traveling merchant has visited your town")
+      answer = input("""Hello, your grace. Would you like to buy anything for a small amount of gold? """)
+      if answer == "yes":
+        print("Thank you for your purchase, enjoy it while you can.")
+        Defense += random.randint(2,4)
+        Attack += random.randint(1,2)
+        Gold -= random.randint(1,2)
+      else:
+        print("Fine, but don't come crying to me when you are defeated.")
+      
+    elif visitor == 4:
+      print("*A shining knight in armor has visited your town")
+      answer = input("""Would you like to purchase my services to protect your town for a sum of gold? """)
+      if answer == "yes":
+        print("Thank you sir. I promise I wont let you down!")
+        Gold -= random.randint(10,20)
+        Happiness += random.randint(8, 15)
+        Attack += random.randint(5,20)
+        Defense += random.randint(5,20)
+        Population += random.randint(4,10)
+      else:
+        print("Fine. Your city is going down in ruins anyway")
+    elif visitor == 5:
+      print("*A witch has visited your town")
+      answer = input("""Would you like to play a game? """)
+      if answer == "yes":
+        print("""We flip a coin if it's heads then I give you 30 gold. If it's tails then I take a bunch of your people's lives""")
+        CoinFlip == random.randint(1,2)
+        if CoinFlip == 1:
+          Gold += 30
+          print("Good job, I guess. You won, but I'll get you next time!")
+        else:
+          Population -= random.randint(10,15)
+          Happiness -= round(random.randint(10,15)/3)
+          print("Hahaha, I will use these lives well!")
+    elif visitor == 6:
+      print("*A general has visited your town")
+      answer = input("""Will you accept my services as a general for a generous sum of gold? """)
+      if answer == "yes":
+        print("Thank you. I will serve you well and train your troops to be unstoppable")
+        Gold -= random.randint(20,25)
+      
+  time.sleep(2)
+  print("You now have " + str(Gold) + " Gold!")
+  print("Your population is now " + str(Population) + " !")
+  print("Your city's happiness is now " + str(Happiness) + " out of 100")
+  print("Your city's attack is now " + str(Attack) + "!")
+  print("Your city's defense is now " + str(Defense) + "!")
+  time.sleep(2)
+  print("The town is going to sleep...")
+  time.sleep(3)
+  dayslived += 1
+  if Population <= 75 and Happiness <= 70:
+    Loss = 1
+  for i in range(6):
+    print("")
+  if Loss == 1:
+    Loss(dayslived)
+    
+  
+#new visitors will be witches , generals, kings
